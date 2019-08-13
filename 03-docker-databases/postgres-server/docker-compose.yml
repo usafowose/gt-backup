@@ -1,0 +1,19 @@
+version: '3.1'
+services:
+  postgres-server:
+    image: postgres:latest
+    container_name: postgres-server
+    #restart: always
+    environment:
+      POSTGRES_PASSWORD: docker
+    volumes:
+     - ./data:/var/lib/postgresql/data
+    ports:
+     - 5432:5432
+networks:
+  default:
+    external:
+      name: ga-tech
+
+# CLI Access:
+# docker-compose run --rm postgres-server psql -h postgres-server -U postgres
