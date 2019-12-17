@@ -4,11 +4,13 @@ services:
     image: mongo:latest
     container_name: mongo-server
     #command: --auth
-    restart: always
+    restart: unless-stopped
     volumes:
-     - ./data/:/data/db
+     - mongo-db-data/:/data/db
     ports:
      - 27017:27017
+volumes:
+  mongo-db-data:
 networks:
   default:
     external:
